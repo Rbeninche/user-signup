@@ -3,9 +3,35 @@ from flask import Flask, render_template, request, redirect
 app = Flask(__name__)
 
 
+posts = [
+    {
+        'author': 'Reginald Beninche',
+        'title': 'Blog Post 1',
+        'content': 'First post content',
+        'date_posted': 'November 28th, 2018'
+    },
+    {
+        'author': 'Naromie Simeon',
+        'title': 'Blog Post 2',
+        'content': 'Second post content',
+        'date_posted': 'April 15th, 2019'
+    }
+]
+
+
 @app.route("/")
 def display_form():
     return render_template('signup.html')
+
+
+@app.route("/blogs")
+def display_blogs():
+    return render_template('blogs.html', posts=posts)
+
+
+@app.route("/newpost")
+def display_new_post():
+    return render_template('newpost.html')
 
 
 @app.route("/", methods=['POST'])
@@ -19,6 +45,8 @@ def validate_form():
     password_error = ''
     confirm_password_error = ''
 
+    # Username validation
+
     if username == '':
         username_error = "Username cannot be left empty"
     elif len(username) < 3:
@@ -27,6 +55,9 @@ def validate_form():
         username_error = "Username cannot be more than 20 characters"
     elif ' ' in username:
         username_error = "Username contains space"
+    # End of Username validation
+
+    # Email validation
 
     if email != '':
         if "@" not in email:
@@ -39,6 +70,9 @@ def validate_form():
             username_error = "Email cannot have less than 3 characters"
         elif len(email) > 20:
             username_error = "Email cannot have more than 20 characters"
+    # End of Email validation
+
+    # Password validation
 
     if password == '':
         password_error = "Password field cannot be left empty"
@@ -53,6 +87,7 @@ def validate_form():
             confirm_password_error = "Please Confirm your password"
         elif confirm_password != password:
             confirm_password_error = "Password does not match"
+    # End of Password validation
 
     if not username_error and not email_error and not password_error and not confirm_password_error:
         return redirect('/thank_you?username=' + username)

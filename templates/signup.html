@@ -132,36 +132,3 @@
 </div>
 {% endblock content %}
 
-<!-- @app.route("/", methods=["POST", 'GET'])
-def index():
-    if request.method == "POST":
-        username = request.form['username']
-        email = request.form['email']
-        password = request.form['password']
-        confirm_password = request.form['password-confirm']
-
-        if username == '':
-            empty_username = "Username cannot be empty"
-            return redirect("/?empty_username=" + empty_username)
-        elif len(username) <= 3:
-            short_username = "Username cannot be less than 3"
-            return redirect("/?short_username=" + short_username)
-        elif len(email) != 0 and "@" not in email:
-            email_error = "Email is incorrect"
-            return redirect("/?email_error=" + email_error)
-        else:
-            username = request.form['username']
-            return render_template('thankyou.html', username=username)
-
-    else:
-        username_encoded_error = request.args.get("empty_username")
-        short_username_encoded_error = request.args.get("short_username")
-        email_encoded_error = request.args.get("email_error")
-
-        return render_template('signup.html', title='SignUp Form', empty_username=username_encoded_error, short_username=short_username_encoded_error, email_error=email_encoded_error)
-
-
-# @app.route("/thank_you", methods=["POST"])
-# def thank_you():
-#     username = request.form['username']
-#     return render_template('thankyou.html', username=username) -->
