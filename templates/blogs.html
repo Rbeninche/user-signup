@@ -2,16 +2,34 @@
 {% block content %}
 <div class="container">
     {% for post in posts %}
-        <article class="media content-section">
+      
+
+        <div class="card w-50 mb-4">
+            <div class="card-header text-center">
+              <h2><a href="{{ url_for('post', post_id=post.id) }}">{{ post.post_title }}</a></h2>
+            </div>
+            <div class="card-body">
+              <p class="card-text">{{ post.post_body }}</p>
+            </div>
+            <div class="card-footer text-muted">
+                <small class="text-muted">{{ post.date_posted }}</small>
+            </div>
+          </div>
+    {% endfor %}
+</div>
+{% endblock content %}
+
+  <!-- <article class="media content-section">
           <div class="media-body">
             <div class="article-metadata">
               <a class="mr-2" href="#">{{ post.author }}</a>
               <small class="text-muted">{{ post.date_posted }}</small>
+              
             </div>
-            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-            <p class="article-content">{{ post.content }}</p>
+            <h2><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">{{ post.post_title }}</a></h2>
+            <p class="article-content">{{ post.post_body }}</p>
+            <small class="text-muted">{{ post.date_posted }}</small>
           </div>
-        </article>
-    {% endfor %}
-</div>
-{% endblock content %}%}
+        </article> -->
+
+

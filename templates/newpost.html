@@ -8,21 +8,49 @@
     		<h1>Create post</h1>
     		
     		<form action="" method="POST">
+
+				
     		    
-    		    
+				
     		    <div class="form-group">
-    		        <label for="title">Title <span class="require">*</span></label>
+    		        <label for="title">Title 
+					<span class="require">*</span></label>
     		        <input type="text" class="form-control" name="title" />
-    		    </div>
+				</div>
+				
+				 <!-- Tile Validation -->
+				 {% if post_title_error %}
+				 
+					 <div class="form-control-feedback mb-4">
+							 <span class="text-danger align-middle">
+								 {{ post_title_error }}
+							 </span>
+					 </div>
+				 
+				 {% endif %}
+				 <!-- End Of Title Validation -->
+				
+				
+					
     		    
-    		    <div class="form-group">
-    		        <label for="description">Description</label>
-    		        <textarea rows="5" class="form-control" name="description" ></textarea>
-    		    </div>
-    		    
-    		    <div class="form-group">
-    		        <p><span class="require">*</span> - required fields</p>
-    		    </div>
+					<div class="form-group">
+						<label for="body">Description
+						<span class="require">*</span>
+						</label>
+						
+						<textarea rows="5" class="form-control" name="body" ></textarea>
+					</div>
+					
+					{% if post_body_error %}
+					
+						<div class="form-control-feedback mb-4">
+								<span class="text-danger align-middle">
+									{{ post_body_error }}
+								</span>
+						</div>
+					
+					{% endif %}
+				
     		    
     		    <div class="form-group">
     		        <button type="submit" class="btn btn-primary">

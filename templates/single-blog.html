@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+
+        <article class="media content-section">
+          <div class="media-body">
+            <h2>{{ post.post_title }}</h2>
+            <p class="article-content">{{ post.post_body }}</p>
+          </div>
+        </article>
+</div>
+{% endblock content %}
